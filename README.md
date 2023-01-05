@@ -35,7 +35,7 @@ COMMIT;
 
 En el archivo **src/main/resources/application.properties**, se debe modificar la cadena de conexión de acuerdo con la base de datos que se haya desplegado. Importante mantener el nombre del usuario **ZTH** para no tener que realizar cambios en el código.
 
-https://github.com/ociknowledge/ociz2h05/commit/8aaabc2f01814f206a475c10785819657634a05e/src/main/resources/application.properties#L12-L14
+https://github.com/ociknowledge/ociz2h05/blob/8aaabc2f01814f206a475c10785819657634a05e/src/main/resources/application.properties#L12-L14
 
 
 ```console
