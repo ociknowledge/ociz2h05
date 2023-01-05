@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--  main-fragment (title, mainContent)  -->
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layouts/main-layout :: main-fragment(  
+        ~{::title},
+        ~{:: #person-main-content}
+        )}">
+
+<head>
+    <title>OCI - From Zero To Hero - Person</title>
+</head>
+
+<body>
+    <div id="person-main-content">
+        <!-- Persons-->
+        <section class="page-section bg-light" id="person">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Formulario</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <form class="row g-3" action="#" th:action="@{/person/save}" th:object="${objeto}" method="post">
+                                    <input type="hidden" id="inputId" th:field="*{id}">
+                                    <div class="col-md-6">
+                                        <label for="inputName">Nombre</label>
+                                        <input type="text" class="form-control" id="inputName" th:field="*{name}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="inputEmail">Email</label>
+                                        <input type="email" class="form-control" id="inputEmail" th:field="*{email}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="inputRole">Rol</label>
+                                        <input type="text" class="form-control" id="inputRole" th:field="*{roleName}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="inputPhone">Telefono</label>
+                                        <input type="text" class="form-control" id="inputPhone" th:field="*{phone}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="inputCountry">State</label>
+                                        <select id="inputCountry" class="form-select" th:field="*{countryCode}">
+                                            <option value="AR">Argentina</option>
+                                            <option value="BO">Bolivia</option>
+                                            <option value="BR">Brazil</option>
+                                            <option value="CL">Chile</option>
+                                            <option value="CO">Colombia</option>
+                                            <option value="EC">Ecuador</option>
+                                            <option value="PY">Paraguay</option>
+                                            <option value="PE">Peru</option>
+                                            <option value="UY">Uruguay</option>
+                                            <option value="VZ">Venezuela</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </form>                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nombre</th>
+                                    <th>Email</th>
+                                    <th>Rol</th>
+                                    <th>Pa&iacute;s</th>
+                                    <th>Acci&oacute;n</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="obj : ${listado}">
+                                    <td th:text="${obj.id}"></td>
+                                    <td th:text="${obj.name}"></td>
+                                    <td th:text="${obj.email}"></td>
+                                    <td th:text="${obj.roleName}"></td>
+                                    <td th:text="${obj.countryCode}"></td>
+                                    <td>
+                                        <a class="btn btn-info" th:href="@{/person/edit/{id}(id=${obj.id})}">
+                                            <i class="fa-solid fa-user-pen"></i>
+                                        </a>
+                                        &nbsp;
+                                        <a class="btn btn-danger" th:href="@{/person/del/{id}(id=${obj.id})}">
+                                            <i class="fa-solid fa-eraser"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
